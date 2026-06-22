@@ -1,0 +1,31 @@
+Indian Space Research Organisation (ISRO)
+
+The Indian Space Research Organisation (ISRO) is the national space agency of India, headquartered in Bengaluru, Karnataka. It was founded on August 15, 1969, by Dr. Vikram Sarabhai, who is widely regarded as the father of the Indian space programme. ISRO operates under the Department of Space (DOS), which is directly overseen by the Prime Minister of India.
+
+History and Evolution
+India's space journey began in 1962 when the Indian National Committee for Space Research (INCOSPAR) was established by Jawaharlal Nehru. The first sounding rocket was launched from Thumba Equatorial Rocket Launching Station (TERLS) in Kerala on November 21, 1963. ISRO was officially formed in 1969, replacing INCOSPAR.
+
+The first Indian satellite, Aryabhata, was launched on April 19, 1975, by the Soviet Union. This was followed by the Bhaskara-I satellite in 1979. India's first indigenous launch vehicle, SLV-3, successfully placed the Rohini satellite in orbit on July 18, 1980, making India the sixth nation to achieve this capability.
+
+Major Missions and Achievements
+Chandrayaan-1, launched on October 22, 2008, was India's first mission to the Moon. It made the groundbreaking discovery of water molecules on the lunar surface. The mission carried 11 scientific instruments from India, USA, UK, Germany, Sweden, and Bulgaria.
+
+The Mars Orbiter Mission (Mangalyaan), launched on November 5, 2013, made India the first Asian nation to reach Martian orbit and the first nation in the world to do so on its maiden attempt. The mission cost approximately $74 million, making it the least expensive Mars mission at the time.
+
+Chandrayaan-3, launched on July 14, 2023, successfully achieved a soft landing near the lunar south pole on August 23, 2023. This made India the fourth country to successfully land on the Moon and the first to land near the south polar region.
+
+Launch Vehicles
+ISRO has developed several launch vehicles including the Polar Satellite Launch Vehicle (PSLV) and the Geosynchronous Satellite Launch Vehicle (GSLV). The PSLV is known for its reliability and versatility, having completed over 50 successful missions. In February 2017, PSLV-C37 set a world record by deploying 104 satellites in a single mission.
+
+The GSLV Mark III, also known as LVM3, is India's heaviest launch vehicle capable of placing 4-tonne class satellites into Geosynchronous Transfer Orbit (GTO). It was used for the Chandrayaan-3 mission.
+
+Satellite Systems
+ISRO operates the Indian National Satellite System (INSAT) for communication, television broadcasting, and meteorology services. The Indian Remote Sensing (IRS) satellite system is one of the largest civilian remote sensing satellite constellations in the world, providing data for agriculture, water resources, urban planning, and disaster management.
+
+The Navigation with Indian Constellation (NavIC), also known as the Indian Regional Navigation Satellite System (IRNSS), provides accurate position information to users in India and the surrounding region up to 1,500 km from the Indian boundary.
+
+Future Plans
+ISRO is currently working on several ambitious projects including Gaganyaan, India's first crewed spaceflight programme, expected to send Indian astronauts to space. The agency is also planning Chandrayaan-4 for lunar sample return, Shukrayaan-1 for Venus exploration, and an Indian Space Station by 2035.
+
+Budget and Global Standing
+ISRO's annual budget for 2023-24 was approximately $1.5 billion. Despite having one of the smaller budgets among major space agencies, ISRO is recognized worldwide for its cost-effective missions. The agency has launched satellites for 34 countries, generating significant revenue and establishing India as a reliable launch service provider.
