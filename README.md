@@ -108,11 +108,17 @@ Assignment-Multilingual-Question-Answer-QnA-Generation-System/
 ├── document_parser.py      # PDF, DOCX, TXT text extraction
 ├── qna_generator.py        # Gemini-based QnA generation & translation
 ├── excel_writer.py         # Excel file creation with 3 styled sheets
+├── generate_samples.py     # Script to generate sample test files
 ├── requirements.txt        # Python dependencies
+├── .env.example            # Example environment config
+├── .env                    # Your API key (local only, gitignored)
 ├── README.md               # Project documentation
 │
 └── sample_files/
-    └── sample.txt          # Sample test document
+    ├── sample.txt                # Sample text (AI overview)
+    ├── ISRO_Space_Programme.txt  # Sample TXT test file
+    ├── Climate_Change_Report.docx # Sample DOCX test file
+    └── History_of_Internet.pdf   # Sample PDF test file
 ```
 
 ---
@@ -137,7 +143,23 @@ cd Assignment-Multilingual-Question-Answer-QnA-Generation-System
 pip install -r requirements.txt
 ```
 
-### Step 3: Run the Application
+### Step 3: Configure API Key
+
+Create a `.env` file in the project root (or copy from example):
+
+```bash
+cp .env.example .env
+```
+
+Then edit `.env` and add your Gemini API key:
+
+```
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+> You can also enter the key directly in the Streamlit sidebar at runtime.
+
+### Step 4: Run the Application
 
 ```bash
 streamlit run app.py

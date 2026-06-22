@@ -10,9 +10,26 @@ Usage:
 
 import streamlit as st
 import time
+import os
 from document_parser import extract_text
 from qna_generator import generate_multilingual_qna
 from excel_writer import create_excel
+
+# ─── Load API Key from .env file or environment variable ──────────────
+def _load_api_key():
+    """Load API key from .env file or environment variable."""
+    # Try loading from .env file in project directory
+    env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+    if os.path.exists(env_path):
+        with open(env_path, "r") as f:
+            for line in f:
+                line = line.strip()
+                if line.startswith("GEMINI_API_KEY="):
+                    return line.split("=", 1)[1].strip().strip('"').strip("'")
+    # Fallback to environment variable
+    return os.environ.get("GEMINI_API_KEY", "")
+
+DEFAULT_API_KEY = _load_api_key()
 
 # ─── Page Configuration ───────────────────────────────────────────────
 st.set_page_config(
@@ -195,10 +212,10 @@ with st.sidebar:
     st.markdown("---")
     
     api_key = st.text_input(
-        "🔑 Google Gemini API Key",
+        "🔑 Gemini API Key",
+        value=DEFAULT_API_KEY,
         type="password",
-        placeholder="Enter your Gemini API key...",
-        help="Get a free key at https://aistudio.google.com/apikey",
+        help="Pre-configured. You can replace with your own key if needed.",
     )
     
     st.markdown("---")
@@ -256,11 +273,11 @@ st.markdown("""
 st.markdown("""
 <div class="step-indicator">
     <div class="step-number">1</div>
-    <div class="step-text">Enter your Gemini API key in the sidebar</div>
+    <div class="step-text">Upload a document (.pdf, .docx, or .txt)</div>
 </div>
 <div class="step-indicator">
     <div class="step-number">2</div>
-    <div class="step-text">Upload a document (.pdf, .docx, or .txt)</div>
+    <div class="step-text">Choose the number of QnA pairs from the sidebar</div>
 </div>
 <div class="step-indicator">
     <div class="step-number">3</div>
@@ -314,7 +331,7 @@ with col2:
     )
 
 if not api_key:
-    st.info("👈 Please enter your **Gemini API key** in the sidebar to get started.")
+    st.info("👈 Please configure your **Gemini API key** in the sidebar to get started.")
 
 if uploaded_file and api_key and generate_btn:
     try:
