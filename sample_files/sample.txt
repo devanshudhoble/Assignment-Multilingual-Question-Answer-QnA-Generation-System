@@ -1,0 +1,13 @@
+Artificial Intelligence (AI) refers to the simulation of human intelligence in machines that are programmed to think and learn like humans. The term may also be applied to any machine that exhibits traits associated with a human mind, such as learning and problem-solving.
+
+The ideal characteristic of artificial intelligence is its ability to rationalize and take actions that have the best chance of achieving a specific goal. A subset of artificial intelligence is machine learning (ML), which refers to the concept that computer programs can automatically learn from and adapt to new data without being assisted by humans. Deep learning techniques enable this automatic learning through the absorption of huge amounts of unstructured data such as text, images, or video.
+
+AI is being used across different industries including finance, healthcare, education, and transportation. In healthcare, AI applications can provide personalized medicine and X-ray readings. Personal assistants like Siri and Alexa use AI to understand and respond to voice commands.
+
+The history of AI dates back to the 1950s when Alan Turing published "Computing Machinery and Intelligence" and proposed the Turing Test. John McCarthy coined the term "Artificial Intelligence" in 1956 at the Dartmouth Conference, which is considered the birth of AI as a field.
+
+Modern AI systems can be categorized into three types: Narrow AI (or Weak AI) which is designed for a particular task, General AI (or Strong AI) which would have the ability to understand and learn any intellectual task that a human can, and Super AI which would surpass human intelligence in all aspects.
+
+Natural Language Processing (NLP) is a branch of AI that helps computers understand, interpret, and manipulate human language. NLP draws from many disciplines including computer science and computational linguistics. Common NLP tasks include speech recognition, sentiment analysis, machine translation, and text summarization.
+
+Ethical considerations in AI include bias in algorithms, privacy concerns, job displacement, and the need for transparent and accountable AI systems. Organizations worldwide are developing frameworks and guidelines to ensure responsible AI development and deployment.
