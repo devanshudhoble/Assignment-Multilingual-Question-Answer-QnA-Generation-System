@@ -240,12 +240,15 @@ Each sheet follows this format:
 
 ### Main Interface
 The application features a premium dark-themed sidebar with a gradient header and step-by-step workflow indicators.
+![Main Interface](screenshots/main_interface.png)
 
-### QnA Generation
-Real-time progress bars show the generation status across all three languages.
+### English QnA Generation (Demo Mode)
+The system extracts text and generates high-quality Question-Answer pairs in English.
+![English QnA Pairs](screenshots/english_qna.png)
 
-### Excel Output
-The generated Excel file contains professionally styled sheets with color-coded tabs.
+### Marathi QnA Translation (Demo Mode)
+Question-Answer pairs are automatically translated into target languages (Hindi and Marathi) with natural language constructs.
+![Marathi QnA Pairs](screenshots/marathi_qna.png)
 
 ---
 
