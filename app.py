@@ -211,12 +211,22 @@ with st.sidebar:
     st.markdown("## ⚙️ Configuration")
     st.markdown("---")
     
-    api_key = st.text_input(
-        "🔑 Gemini API Key",
-        value=DEFAULT_API_KEY,
-        type="password",
-        help="Pre-configured. You can replace with your own key if needed.",
+    demo_mode = st.checkbox(
+        "🤖 Demo Mode (Offline / No Key)",
+        value=not bool(DEFAULT_API_KEY),
+        help="Check this to test the app offline with mock data if you don't have a Gemini API key.",
     )
+    
+    if demo_mode:
+        api_key = "DEMO_MODE"
+        st.info("🤖 **Demo Mode Active**: Generates QnA pairs using local rules without calling Gemini API.")
+    else:
+        api_key = st.text_input(
+            "🔑 Gemini API Key",
+            value=DEFAULT_API_KEY,
+            type="password",
+            help="Pre-configured. You can replace with your own key if needed.",
+        )
     
     st.markdown("---")
     

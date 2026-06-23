@@ -242,6 +242,105 @@ Translate all {len(qna_pairs)} pairs now:"""
     return translated
 
 
+def generate_mock_qna(text: str, num_pairs: int = 10) -> dict:
+    """
+    Generate mock QnA pairs using basic rule-based NLP when in Demo Mode.
+    Attempts to extract sentences containing key factual markers.
+    """
+    # Clean text
+    text_clean = re.sub(r'\s+', ' ', text)
+    
+    # Simple sentence tokenizer
+    sentences = re.split(r'(?<=[.!?])\s+', text_clean)
+    sentences = [s.strip() for s in sentences if len(s.strip()) > 30]
+    
+    # Try to find sentences with numbers, years, names, or keywords
+    factual_sentences = []
+    for s in sentences:
+        if any(keyword in s.lower() for keyword in ["is", "was", "founded", "developed", "launched", "created", "discovered", "system", "program"]):
+            factual_sentences.append(s)
+            
+    # Fallback to standard sentences if not enough factual ones
+    if len(factual_sentences) < num_pairs:
+        factual_sentences.extend([s for s in sentences if s not in factual_sentences])
+        
+    # Final fallback if document is too short
+    if not factual_sentences:
+        factual_sentences = [
+            "This is a demonstration of the Multilingual QnA Generator system.",
+            "The system converts PDF, DOCX, and TXT files into structured Question-Answer pairs.",
+            "The generated QnA pairs are translated into English, Hindi, and Marathi.",
+            "The final output is saved into a styled Excel workbook named QnA.xlsx.",
+            "This demo mode allows testing the entire pipeline without an active Gemini API key."
+        ]
+        
+    # Truncate to requested number
+    factual_sentences = factual_sentences[:num_pairs]
+    
+    english = []
+    hindi = []
+    marathi = []
+    
+    # Pre-defined translations for the fallback sentences to look extremely professional
+    predefined = {
+        "This is a demonstration of the Multilingual QnA Generator system.": {
+            "en": ("What is this application demonstrating?", "This application is a demonstration of the Multilingual QnA Generator system."),
+            "hi": ("यह एप्लिकेशन किसका प्रदर्शन कर रहा है?", "यह एप्लिकेशन बहुभाषी प्रश्न-उत्तर (QnA) जेनरेटर सिस्टम का एक प्रदर्शन है।"),
+            "mr": ("हा अनुप्रयोग कशाचे प्रात्यक्षिक दाखवत आहे?", "हा अनुप्रयोग बहुभाषिक प्रश्न-उत्तर (QnA) जनरेटर प्रणालीचे प्रात्यक्षिक आहे.")
+        },
+        "The system converts PDF, DOCX, and TXT files into structured Question-Answer pairs.": {
+            "en": ("Which file formats does the system convert?", "The system converts PDF, DOCX, and TXT files into structured Question-Answer pairs."),
+            "hi": ("सिस्टम किन फ़ाइल स्वरूपों को कनवर्ट करता है?", "सिस्टम PDF, DOCX और TXT फ़ाइलों को संरचित प्रश्न-उत्तर जोड़े में परिवर्तित करता है।"),
+            "mr": ("प्रणाली कोणत्या फाईल फॉरमॅट्सचे रूपांतर करते?", "ही प्रणाली PDF, DOCX आणि TXT फाइल्सचे संरचित प्रश्न-उत्तर जोड्यांमध्ये रूपांतर करते.")
+        },
+        "The generated QnA pairs are translated into English, Hindi, and Marathi.": {
+            "en": ("What target languages are the QnA pairs translated into?", "The generated QnA pairs are translated into English, Hindi, and Marathi."),
+            "hi": ("प्रश्न-उत्तर जोड़े किन लक्षित भाषाओं में अनुवादित किए जाते हैं?", "उत्पन्न प्रश्न-उत्तर जोड़े अंग्रेजी, हिंदी और मराठी में अनुवादित किए जाते हैं।"),
+            "mr": ("QnA जोड्या कोणत्या लक्ष्य भाषांमध्ये अनुवादित केल्या जातात?", "तयार केलेल्या QnA जोड्या इंग्रजी, हिंदी आणि मराठीमध्ये अनुवादित केल्या जातात.")
+        },
+        "The final output is saved into a styled Excel workbook named QnA.xlsx.": {
+            "en": ("Where is the final QnA output saved?", "The final output is saved into a styled Excel workbook named QnA.xlsx."),
+            "hi": ("अंतिम प्रश्न-उत्तर आउटपुट कहां सहेजा जाता है?", "अंतिम आउटपुट QnA.xlsx नामक एक स्टाइल वाले एक्सेल वर्कबुक में सहेजा जाता है।"),
+            "mr": ("अंतिम QnA आउटपुट कोठे जतन केले जाते?", "अंतिम आउटपुट QnA.xlsx नावाच्या शैलीदार एक्सेल वर्कबुकमध्ये जतन केले जाते.")
+        },
+        "This demo mode allows testing the entire pipeline without an active Gemini API key.": {
+            "en": ("What is the purpose of the Demo Mode?", "This demo mode allows testing the entire pipeline without an active Gemini API key."),
+            "hi": ("डेमो मोड का उद्देश्य क्या है?", "यह डेमो मोड सक्रिय जेमिनी एपीआई कुंजी के बिना संपूर्ण पाइपलाइन का परीक्षण करने की अनुमति देता है।"),
+            "mr": ("डेमो मोडचा उद्देश काय आहे?", "हा डेमो मोड सक्रिय जेमिनी एपीआई की (Gemini API key) शिवाय संपूर्ण पाईपलाईनची चाचणी घेण्यास अनुमती देतो.")
+        }
+    }
+    
+    for s in factual_sentences:
+        if s in predefined:
+            p = predefined[s]
+            english.append({"question": p["en"][0], "answer": p["en"][1]})
+            hindi.append({"question": p["hi"][0], "answer": p["hi"][1]})
+            marathi.append({"question": p["mr"][0], "answer": p["mr"][1]})
+        else:
+            # Generate rule-based QA from the sentence
+            words = s.split()
+            concept = " ".join(words[:3]) if len(words) >= 3 else "the document details"
+            
+            q_en = f"What details are provided regarding '{concept}'?"
+            a_en = s
+            
+            q_hi = f"दस्तावेज़ के अनुसार '{concept}' के बारे में क्या विवरण दिया गया है?"
+            a_hi = f"दस्तावेज़ में उल्लेख है: {s}"
+            
+            q_mr = f"दस्तऐवजानुसार '{concept}' बद्दल काय तपशील दिले आहेत?"
+            a_mr = f"दस्तऐवजात नमूद केले आहे: {s}"
+            
+            english.append({"question": q_en, "answer": a_en})
+            hindi.append({"question": q_hi, "answer": a_hi})
+            marathi.append({"question": q_mr, "answer": a_mr})
+            
+    return {
+        "english": english,
+        "hindi": hindi,
+        "marathi": marathi
+    }
+
+
 def generate_multilingual_qna(
     text: str, 
     api_key: str, 
@@ -250,18 +349,17 @@ def generate_multilingual_qna(
 ) -> dict:
     """
     Orchestrator function that generates QnA pairs in all three languages.
-    
-    Args:
-        text: The extracted document text.
-        api_key: Google Gemini API key.
-        num_pairs: Number of QnA pairs to generate.
-        progress_callback: Optional callback function for progress updates.
-                          Called with (step_number, total_steps, message).
-    
-    Returns:
-        Dict with keys 'english', 'hindi', 'marathi', each containing
-        a list of QnA dicts.
     """
+    if api_key == "DEMO_MODE" or not api_key:
+        if progress_callback:
+            progress_callback(1, 3, "🤖 Demo Mode Active: Generating mock QnA pairs...")
+            time.sleep(0.8)
+            progress_callback(2, 3, "🇮🇳 Generating Hindi translations (Demo)...")
+            time.sleep(0.8)
+            progress_callback(3, 3, "🇮🇳 Generating Marathi translations (Demo)...")
+            time.sleep(0.5)
+        return generate_mock_qna(text, num_pairs)
+        
     results = {}
     
     # Status callback for retry messages
